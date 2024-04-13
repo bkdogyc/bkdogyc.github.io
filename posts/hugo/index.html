@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <title>Hugo :: Hugo Theme Tailwind Example Site - Example site for hugo-theme-tailwind</title>
+  
+  <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta
+  name="description"
+  content="Hugo 專案啟動 隨著記憶力越來越差，越來越多的技術，用過之後就忘記了，由於沒有保留文件的習慣，很多東西都需要重新查詢，只有停留在有印象的情況。
+所以啟動hugo的筆記，記錄自己做過些什麼東西。
+安裝Hugo 安裝hugo指令，輸入command
+brew intall hugo 建立site
+hugo new site BkDog 啟動測試(只是自己看看)
+# 啟動server hugo server # 草稿顯示模式 hugo server -D 需要注意的是，在hugo初期時，是沒有theme的，所以啟動時，一定會出現404 page not found，所以需要先安裝theme。 請到Theme 找一個喜歡的模板，自行安裝囉。
+安裝完成theme後，必須要hugo.toml的theme設定為自己的theme名稱，以我使用的tailwind來說，以下為內容範例。 其他設定請自行更改為需要的，因為挺簡單的就不贅述了。
+baseURL = &amp;#34;https://example.com/&amp;#34; title = &amp;#34;Hugo Theme Tailwind Example Site&amp;#34; author = &amp;#34;BkDog&amp;#34; copyright = &amp;#34;BkDog&amp;#34; paginate = 10 languageCode = &amp;#34;en&amp;#34; theme = &amp;#34;tailwind&amp;#34; [params] # dir name of your blog content (default is `content/posts`). # the list of set content will show up on your index page (baseurl)."
+/>
+<meta
+  name="keywords"
+  content="hugo, tailwind, tailwindcss, hugo theme, hugo theme tailwind"
+/>
+<meta name="robots" content="noodp" />
+<meta property="og:title" content="Hugo" />
+<meta property="og:description" content="Hugo 專案啟動 隨著記憶力越來越差，越來越多的技術，用過之後就忘記了，由於沒有保留文件的習慣，很多東西都需要重新查詢，只有停留在有印象的情況。
+所以啟動hugo的筆記，記錄自己做過些什麼東西。
+安裝Hugo 安裝hugo指令，輸入command
+brew intall hugo 建立site
+hugo new site BkDog 啟動測試(只是自己看看)
+# 啟動server hugo server # 草稿顯示模式 hugo server -D 需要注意的是，在hugo初期時，是沒有theme的，所以啟動時，一定會出現404 page not found，所以需要先安裝theme。 請到Theme 找一個喜歡的模板，自行安裝囉。
+安裝完成theme後，必須要hugo.toml的theme設定為自己的theme名稱，以我使用的tailwind來說，以下為內容範例。 其他設定請自行更改為需要的，因為挺簡單的就不贅述了。
+baseURL = &#34;https://example.com/&#34; title = &#34;Hugo Theme Tailwind Example Site&#34; author = &#34;BkDog&#34; copyright = &#34;BkDog&#34; paginate = 10 languageCode = &#34;en&#34; theme = &#34;tailwind&#34; [params] # dir name of your blog content (default is `content/posts`). # the list of set content will show up on your index page (baseurl)." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/hugo/" /><meta property="article:section" content="posts" />
+<meta property="article:published_time" content="2024-04-14T00:25:47+08:00" />
+<meta property="article:modified_time" content="2024-04-14T00:25:47+08:00" />
+
+<meta name="twitter:card" content="summary"/><meta name="twitter:title" content="Hugo"/>
+<meta name="twitter:description" content="Hugo 專案啟動 隨著記憶力越來越差，越來越多的技術，用過之後就忘記了，由於沒有保留文件的習慣，很多東西都需要重新查詢，只有停留在有印象的情況。
+所以啟動hugo的筆記，記錄自己做過些什麼東西。
+安裝Hugo 安裝hugo指令，輸入command
+brew intall hugo 建立site
+hugo new site BkDog 啟動測試(只是自己看看)
+# 啟動server hugo server # 草稿顯示模式 hugo server -D 需要注意的是，在hugo初期時，是沒有theme的，所以啟動時，一定會出現404 page not found，所以需要先安裝theme。 請到Theme 找一個喜歡的模板，自行安裝囉。
+安裝完成theme後，必須要hugo.toml的theme設定為自己的theme名稱，以我使用的tailwind來說，以下為內容範例。 其他設定請自行更改為需要的，因為挺簡單的就不贅述了。
+baseURL = &#34;https://example.com/&#34; title = &#34;Hugo Theme Tailwind Example Site&#34; author = &#34;BkDog&#34; copyright = &#34;BkDog&#34; paginate = 10 languageCode = &#34;en&#34; theme = &#34;tailwind&#34; [params] # dir name of your blog content (default is `content/posts`). # the list of set content will show up on your index page (baseurl)."/>
+
+
+<link rel="canonical" href="http://localhost:1313/posts/hugo/" />
+
+<link rel="shortcut icon" href="/favicon.ico" />
+<link rel="stylesheet" href="/css/index.7e915884f3dd6d57e42096f9ebaa8c2c1bce67d7b52260cc1f09af3ab6af714a.css">
+
+
+
+
+
+
+
+
+
+  
+</head>
+<body class="flex flex-col min-h-screen w-full bg-slate-50 dark:bg-gray-800">
+  <header class="flex flex-none justify-center z-10">
+    <div class="flex flex-row gap justify-between w-full max-w-4xl lg:max-w-5xl h-12 mt-3">
+  <div class="flex-none ml-2 md:ml-0">
+    <a href="/" class="">
+      <img class="h-12 w-12 rounded-full object-cover bg-gray-100" src="/0.jpg" alt="logo">
+    </a>
+  </div>
+  <div class="flex-1"></div>
+  <div class="flex-none">
+    
+
+
+
+<nav class="h-full static">
+  <button id="navbar-menu-toggle" type="button" class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg md:hidden" aria-controls="navbar-menu" aria-expanded="false">
+    <span class="sr-only">Open main menu</span>
+    <i class="w-8 h-8">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-menu-2" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M4 6l16 0" />
+  <path d="M4 12l16 0" />
+  <path d="M4 18l16 0" />
+</svg>
+
+    </i>
+  </button>
+  <div class="absolute md:static top-16 left-0 right-0 z-50 hidden w-full md:block md:w-auto" id="navbar-menu">
+    <ul class="flex flex-col mx-2 md:mx-0 md:flex-row md:border-0 rounded-sm md:rounded-full px-3 text-base font-medium text-slate-800 dark:text-slate-200 shadow-lg bg-white dark:bg-gray-600 shadow-slate-800/5 dark:shadow-slate-200/5 ring-1 ring-slate-900/5 dark:ring-slate-100/5">
+    
+        <li id="about" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600"
+            href="" title="About">About</a>
+        </li>
+      
+    
+        <li id="post" class="">
+          <a class="block px-3 py-3 hover:text-emerald-600 text-emerald-600"
+            href="/posts/" title="Post">Post</a>
+        </li>
+      
+    
+    </ul>
+  </div>
+</nav>
+
+
+  </div>
+  
+  <div class="flex-none mx-1"></div>
+  
+  <div class="flex-none md:hidden">
+    <a href=/search/ class="inline-flex items-center p-2 text-sm text-slate-800 dark:text-slate-200 rounded-lg" aria-controls="navbar-menu" aria-expanded="false">
+      <span class="sr-only">Search</span>
+      <i class="w-8 h-8">
+        <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-search" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+    <path d="M10 10m-7 0a7 7 0 1 0 14 0a7 7 0 1 0 -14 0" />
+    <path d="M21 21l-6 -6" />
+</svg>
+
+      </i>
+    </a>
+  </div>
+  <div class="darkmode-toggle flex flex-none mr-2 md:mr-0">
+    <label for="darkmode-toggle" class="flex items-center px-3 cursor-pointer rounded-full bg-gray-100 dark:bg-gray-600" title="Toggle dark mode">
+      <input name="darkmode-toggle" id="darkmode-toggle" type="checkbox" class="sr-only peer" aria-label="Toggle dark mode">
+      <div class="group flex flex-row gap-1 justify-center h-8 px-1 rounded-full bg-white dark:bg-gray-700">
+        <i class="h-6 w-6 flex-none rounded-full bg-yellow-400 place-self-center peer-checked:group-[]:invisible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-brightness-down" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-3 0a3 3 0 1 0 6 0a3 3 0 1 0 -6 0"></path>
+   <path d="M12 5l0 .01"></path>
+   <path d="M17 7l0 .01"></path>
+   <path d="M19 12l0 .01"></path>
+   <path d="M17 17l0 .01"></path>
+   <path d="M12 19l0 .01"></path>
+   <path d="M7 17l0 .01"></path>
+   <path d="M5 12l0 .01"></path>
+   <path d="M7 7l0 .01"></path>
+</svg>
+
+        </i>
+        <i class="h-6 w-6 flex-none rounded-full place-self-center invisible peer-checked:group-[]:visible">
+          <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-moon-stars" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 3c.132 0 .263 0 .393 0a7.5 7.5 0 0 0 7.92 12.446a9 9 0 1 1 -8.313 -12.454z"></path>
+   <path d="M17 4a2 2 0 0 0 2 2a2 2 0 0 0 -2 2a2 2 0 0 0 -2 -2a2 2 0 0 0 2 -2"></path>
+   <path d="M19 11h2m-1 -1v2"></path>
+</svg>
+
+        </i>
+      </div>
+    </label>
+  </div>
+</div>
+
+  </header>
+  <main class="flex flex-auto justify-center">
+    
+<div class="w-full max-w-4xl lg:max-w-5xl">
+  <div class="flex flex-col gap-y-3 p-6 mt-6 mx-2 md:mx-0 rounded-lg shadow-md bg-white dark:bg-gray-700">
+    <h1 class="text-4xl font-semibold text-slate-800 dark:text-slate-100">
+      <a href="/posts/hugo/">Hugo</a>
+    </h1>
+
+    
+    
+
+
+    <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2024-04-14T00:25:47&#43;08:00">
+      2024-04-14
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
+</svg>
+
+    </i>
+    <span>
+      One minute to read
+    </span>
+  </div>
+</div>
+
+
+    
+      
+      <section class="prose prose-slate dark:prose-invert w-full max-w-4xl lg:max-w-5xl mt-6">
+        <h2>Table of Contents</h2>
+        <aside><nav id="TableOfContents">
+  <ul>
+    <li><a href="#安裝hugo">安裝Hugo</a></li>
+    <li><a href="#增加新文章">增加新文章</a></li>
+    <li><a href="#發佈到github">發佈到github</a></li>
+  </ul>
+</nav></aside>
+      </section>
+      
+    
+
+    <article class="mt-6 w-full max-w-4xl lg:max-w-5xl prose prose-slate dark:prose-invert prose-quoteless post-content">
+      <h1 id="hugo-專案啟動">Hugo 專案啟動</h1>
+<p>隨著記憶力越來越差，越來越多的技術，用過之後就忘記了，由於沒有保留文件的習慣，很多東西都需要重新查詢，只有停留在有印象的情況。</p>
+<p>所以啟動hugo的筆記，記錄自己做過些什麼東西。</p>
+<h2 id="安裝hugo">安裝Hugo</h2>
+<ol>
+<li>
+<p>安裝hugo指令，輸入command</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>brew intall hugo
+</span></span></code></pre></div></li>
+<li>
+<p>建立site</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo new site BkDog
+</span></span></code></pre></div></li>
+<li>
+<p>啟動測試(只是自己看看)</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span><span style="color:#75715e"># 啟動server</span>
+</span></span><span style="display:flex;"><span>hugo server
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 草稿顯示模式</span>
+</span></span><span style="display:flex;"><span>hugo server -D
+</span></span></code></pre></div></li>
+<li>
+<p>需要注意的是，在hugo初期時，是沒有theme的，所以啟動時，一定會出現404 page not found，所以需要先安裝theme。
+請到<a href="https://github.com/gohugoio/hugo/releases" target="_blank" rel="noopener">Theme</a>
+找一個喜歡的模板，自行安裝囉。</p>
+</li>
+<li>
+<p>安裝完成theme後，必須要hugo.toml的theme設定為自己的theme名稱，以我使用的tailwind來說，以下為內容範例。
+其他設定請自行更改為需要的，因為挺簡單的就不贅述了。</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-toml" data-lang="toml"><span style="display:flex;"><span><span style="color:#a6e22e">baseURL</span> = <span style="color:#e6db74">&#34;https://example.com/&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">title</span> = <span style="color:#e6db74">&#34;Hugo Theme Tailwind Example Site&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">author</span> = <span style="color:#e6db74">&#34;BkDog&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">copyright</span> = <span style="color:#e6db74">&#34;BkDog&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">paginate</span> = <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">languageCode</span> = <span style="color:#e6db74">&#34;en&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">theme</span> = <span style="color:#e6db74">&#34;tailwind&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">params</span>]
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># dir name of your blog content (default is `content/posts`).</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#75715e"># the list of set content will show up on your index page (baseurl).</span>
+</span></span><span style="display:flex;"><span>  <span style="color:#a6e22e">contentTypeName</span> = <span style="color:#e6db74">&#34;posts&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">header</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">logo</span> = <span style="color:#e6db74">&#34;0.jpg&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [<span style="color:#a6e22e">params</span>.<span style="color:#a6e22e">footer</span>]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">since</span> = <span style="color:#ae81ff">2024</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">poweredby</span> = <span style="color:#66d9ef">true</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">menu</span>]
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">identifier</span> = <span style="color:#e6db74">&#34;post&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;Post&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pageRef</span> = <span style="color:#e6db74">&#34;/posts&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">0</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>  [[<span style="color:#a6e22e">menu</span>.<span style="color:#a6e22e">main</span>]]
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">identifier</span> = <span style="color:#e6db74">&#34;about&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">name</span> = <span style="color:#e6db74">&#34;About&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">pageRef</span> = <span style="color:#e6db74">&#34;/about&#34;</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#a6e22e">weight</span> = <span style="color:#ae81ff">10</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>[<span style="color:#a6e22e">taxonomies</span>]
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">category</span> = <span style="color:#e6db74">&#34;categories&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">tag</span> = <span style="color:#e6db74">&#34;tags&#34;</span>
+</span></span><span style="display:flex;"><span><span style="color:#a6e22e">series</span> = <span style="color:#e6db74">&#34;series&#34;</span>
+</span></span></code></pre></div></li>
+</ol>
+<h2 id="增加新文章">增加新文章</h2>
+<ol>
+<li>執行新增文章指令
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-shell" data-lang="shell"><span style="display:flex;"><span>hugo new content posts/hugo.md
+</span></span></code></pre></div></li>
+<li>編輯hugo.md</li>
+<li>注意表頭
+當你帶有draft時，只是個草稿，不會在正常狀態下
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-markdown" data-lang="markdown"><span style="display:flex;"><span>+++
+</span></span><span style="display:flex;"><span>title = &#39;Hugo&#39;
+</span></span><span style="display:flex;"><span>date = 2024-04-14T00:25:47+08:00
+</span></span><span style="display:flex;"><span>draft = true # 這行代表你只是個草稿
+</span></span><span style="display:flex;"><span>+++
+</span></span></code></pre></div></li>
+<li>這裡就沒有其他需要注意的地方了。</li>
+</ol>
+<h2 id="發佈到github">發佈到github</h2>
+
+    </article>
+
+    
+
+
+
+  </div>
+</div>
+
+  </main>
+  <footer class="flex flex-none justify-center">
+    <section class="flex flex-col md:flex-row mx-2 md:mx-0 gap-2 md:gap-0 justify-between w-full max-w-4xl lg:max-w-5xl py-6 text-slate-500 dark:text-slate-300">
+  <div class="flex flex-row">
+    
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+  
+
+
+  </div>
+  <div class="grow"></div>
+  <div class="flex flex-row">
+    <i class="h-6 w-6 flex-none"><svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copyright" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0"></path>
+   <path d="M14 9.75a3.016 3.016 0 0 0 -4.163 .173a2.993 2.993 0 0 0 0 4.154a3.016 3.016 0 0 0 4.163 .173"></path>
+</svg>
+</i> 2024 BkDog
+    
+  </div>
+  
+  <div class="flex flex-row">
+    <span class="ml-0 pl-0 md:ml-2 md:pl-2 border-l-0 md:border-l border-slate-300 dark:border-slate-400">
+      Powered by <a href="https://gohugo.io" target="_blank" rel="noopener" class="underline">Hugo</a> <span class="text-red-600">&hearts;</span> <a href="https://github.com/tomowang/hugo-theme-tailwind" target="_blank" rel="noopener" class="underline">Tailwind</a>
+    </span>
+  </div>
+  
+</section>
+
+  </footer>
+  <script src="/main.js"></script>
+
+<div class="hidden top-1 right-1" id="code-copy">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-copy" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M7 7m0 2.667a2.667 2.667 0 0 1 2.667 -2.667h8.666a2.667 2.667 0 0 1 2.667 2.667v8.666a2.667 2.667 0 0 1 -2.667 2.667h-8.666a2.667 2.667 0 0 1 -2.667 -2.667z" />
+  <path d="M4.012 16.737a2.005 2.005 0 0 1 -1.012 -1.737v-10c0 -1.1 .9 -2 2 -2h10c.75 0 1.158 .385 1.5 1" />
+</svg>
+
+  </i>
+</div>
+<div class="hidden top-1 right-1" id="code-copy-done">
+  <i class="h-6 w-6 block">
+    <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-check" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+  <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+  <path d="M5 12l5 5l10 -10" />
+</svg>
+
+  </i>
+</div><script src="/code-copy.js"></script>
+
+
+
+
+
+</body>
+</html>
