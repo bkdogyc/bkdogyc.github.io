@@ -153,6 +153,75 @@
         
           <article class="flex flex-col gap-y-3 p-6 mt-6 mx-2 md:mx-0 rounded-lg shadow-md bg-white dark:bg-gray-700">
             <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
+              <a href="/posts/rocketmqpit/">RocketmqPit</a>
+            </h2>
+
+            
+  
+  <div class="my-4 text-large text-slate-600 dark:text-slate-300">
+    RocketMQ 順序消息坑一波 因應交易所業務，所有的交易消息需要有序進行，否則肯定會早成結算任務的異常狀態，但是以RocketMQ坑人的方式，經過各種測試總算解決問題。
+以下為各種測試經驗產生的結果。
+First try ：會不會是版本問題? 公司用的版本為4.7，也許版本有可能出問題，先考慮提升版本，畢竟MQ應該要有序消費應該不是難點，會有這種問題也許是版本產生的bug吧？
+將版本提升到5.2，你會發現一點用都沒有（笑。
+Second try : 注意consumer必須要是order的方式 經由文件，我們在消費隊列的時候，必須要用順序的方式，以下列出方法(JAVA的網路範例)：
+consumer.registerMessageListener(new MessageListenerOrderly() { @Override public ConsumeConcurrentlyStatus consumeMessage(List&lt;MessageExt&gt; msgs, ConsumeOrderlyContext context) { try { //模拟业务处理消息的时间 Thread.sleep(new Random().nextInt(1000)); System.out.println(new String(msgs.getBody(),&quot;utf-8&quot;)); } catch (Exception e) { e.printStackTrace(); } return ConsumeOrderlyStatus.SUCCESS; } }); 重點是MessageListenerOrderly，感覺應該更接近完成了。
+不過竟然要被稱為坑，就代表這件事情沒有想像的簡單，原本的code就是這樣了，所以可以得知這事情沒用。
+Third try : 那就是writeQueue和readQueue的數量問題？ 官方又隱晦地告訴你，你可以從code去鎖定寫入的queue為第一個，用來確保寫入的順序和讀取的順序，所以當我們的QUEUE變多的時候，事實上就會造成順序不正確！
+所以你可以換個思路就是：當開topic的時候，直接把這兩種queue直接設定為1個，這個情況下，就不用改CODE了！
+可想而知，沒錯！改了還是沒用！
+Forth try : 會不會是consume的thread數量問題 當我們在消費信息的時候，由於會以多個thread的方式消費（可以參照套件），他會不斷的用不同的thread去消費內容，使信息能夠更快的進來，假設這個階段，產生的順序問題，是不是有可能產生順序問題呢？ 所以我們直接把消費的thread直接鎖死在1。很好，沒用，而且消費的速度還整個慢了。
+Fifth try : 關閉auto create topic 好傢伙，這件事情官方沒有看到，因為當你的mq主機是以cluster來架設的情況下，這時候，自動建立的topic會為cluster topic。
+也就是說，這個topic會同時存在於多個broker中，經由上個實驗，你想到了什麼？ 就是不同broker，就算只有一個queue也等於有兩個以上的queue了，這時候豈不是亂序了？
+移除所有的topic，關閉autoCreateTopic，手動建立topic
+mqadmin updateTopic -c DefaultCluster -t FIFOTopic -o true -n 127.
+  </div>
+  
+
+
+            
+
+
+            <div class="flex flex-col gap-y-1 md:flex-row md:gap-y-0 md:gap-x-4 text-slate-500 dark:text-slate-300">
+  
+  
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-calendar" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M4 7a2 2 0 0 1 2 -2h12a2 2 0 0 1 2 2v12a2 2 0 0 1 -2 2h-12a2 2 0 0 1 -2 -2v-12z"></path>
+   <path d="M16 3v4"></path>
+   <path d="M8 3v4"></path>
+   <path d="M4 11h16"></path>
+   <path d="M11 15h1"></path>
+   <path d="M12 15v3"></path>
+</svg>
+
+    </i>
+    <time datetime="2024-04-22T01:56:30&#43;08:00">
+      2024-04-22
+    </time>
+  </div>
+
+  <div class="flex flex-row text-base gap-x-1">
+    <i class="h-6 w-6 flex-none">
+      <svg xmlns="http://www.w3.org/2000/svg" class="icon icon-tabler icon-tabler-hourglass-high" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+   <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+   <path d="M6.5 7h11"></path>
+   <path d="M6 20v-2a6 6 0 1 1 12 0v2a1 1 0 0 1 -1 1h-10a1 1 0 0 1 -1 -1z"></path>
+   <path d="M6 4v2a6 6 0 1 0 12 0v-2a1 1 0 0 0 -1 -1h-10a1 1 0 0 0 -1 1z"></path>
+</svg>
+
+    </i>
+    <span>
+      One minute to read
+    </span>
+  </div>
+</div>
+
+          </article>
+        
+          <article class="flex flex-col gap-y-3 p-6 mt-6 mx-2 md:mx-0 rounded-lg shadow-md bg-white dark:bg-gray-700">
+            <h2 class="text-4xl font-semibold text-slate-800 dark:text-slate-200">
               <a href="/posts/hugo/">Hugo</a>
             </h2>
 

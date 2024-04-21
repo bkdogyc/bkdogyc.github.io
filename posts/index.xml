@@ -7,8 +7,15 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en</language>
     <copyright>BkDog</copyright>
-    <lastBuildDate>Sun, 14 Apr 2024 00:25:47 +0800</lastBuildDate>
+    <lastBuildDate>Mon, 22 Apr 2024 01:56:30 +0800</lastBuildDate>
     <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>RocketmqPit</title>
+      <link>http://localhost:1313/posts/rocketmqpit/</link>
+      <pubDate>Mon, 22 Apr 2024 01:56:30 +0800</pubDate>
+      <guid>http://localhost:1313/posts/rocketmqpit/</guid>
+      <description>RocketMQ 順序消息坑一波 因應交易所業務，所有的交易消息需要有序進行，否則肯定會早成結算任務的異常狀態，但是以RocketMQ坑人的方式，經過各種測試總算解決問題。&#xA;以下為各種測試經驗產生的結果。&#xA;First try ：會不會是版本問題? 公司用的版本為4.7，也許版本有可能出問題，先考慮提升版本，畢竟MQ應該要有序消費應該不是難點，會有這種問題也許是版本產生的bug吧？&#xA;將版本提升到5.2，你會發現一點用都沒有（笑。&#xA;Second try : 注意consumer必須要是order的方式 經由文件，我們在消費隊列的時候，必須要用順序的方式，以下列出方法(JAVA的網路範例)：&#xA;consumer.registerMessageListener(new MessageListenerOrderly() { @Override public ConsumeConcurrentlyStatus consumeMessage(List&amp;lt;MessageExt&amp;gt; msgs, ConsumeOrderlyContext context) { try { //模拟业务处理消息的时间 Thread.sleep(new Random().nextInt(1000)); System.out.println(new String(msgs.getBody(),&amp;#34;utf-8&amp;#34;)); } catch (Exception e) { e.printStackTrace(); } return ConsumeOrderlyStatus.SUCCESS; } }); 重點是MessageListenerOrderly，感覺應該更接近完成了。&#xA;不過竟然要被稱為坑，就代表這件事情沒有想像的簡單，原本的code就是這樣了，所以可以得知這事情沒用。&#xA;Third try : 那就是writeQueue和readQueue的數量問題？ 官方又隱晦地告訴你，你可以從code去鎖定寫入的queue為第一個，用來確保寫入的順序和讀取的順序，所以當我們的QUEUE變多的時候，事實上就會造成順序不正確！&#xA;所以你可以換個思路就是：當開topic的時候，直接把這兩種queue直接設定為1個，這個情況下，就不用改CODE了！&#xA;可想而知，沒錯！改了還是沒用！&#xA;Forth try : 會不會是consume的thread數量問題 當我們在消費信息的時候，由於會以多個thread的方式消費（可以參照套件），他會不斷的用不同的thread去消費內容，使信息能夠更快的進來，假設這個階段，產生的順序問題，是不是有可能產生順序問題呢？ 所以我們直接把消費的thread直接鎖死在1。很好，沒用，而且消費的速度還整個慢了。&#xA;Fifth try : 關閉auto create topic 好傢伙，這件事情官方沒有看到，因為當你的mq主機是以cluster來架設的情況下，這時候，自動建立的topic會為cluster topic。&#xA;也就是說，這個topic會同時存在於多個broker中，經由上個實驗，你想到了什麼？ 就是不同broker，就算只有一個queue也等於有兩個以上的queue了，這時候豈不是亂序了？&#xA;移除所有的topic，關閉autoCreateTopic，手動建立topic&#xA;mqadmin updateTopic -c DefaultCluster -t FIFOTopic -o true -n 127.</description>
+    </item>
     <item>
       <title>Hugo</title>
       <link>http://localhost:1313/posts/hugo/</link>
