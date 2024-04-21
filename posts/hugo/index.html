@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
-  <title>Hugo :: Hugo Theme Tailwind Example Site - Example site for hugo-theme-tailwind</title>
+  <title>Hugo :: BkDog筆記 - Example site for hugo-theme-tailwind</title>
   
   <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -310,6 +310,15 @@ baseURL = &#34;https://example.com/&#34; title = &#34;Hugo Theme Tailwind Exampl
 <li>這裡就沒有其他需要注意的地方了。</li>
 </ol>
 <h2 id="發佈到github">發佈到github</h2>
+<p>建立一個“帳號名稱.github.io”的repository到github上。</p>
+<p>把hugo的public放置到這個repository中</p>
+<div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-bash" data-lang="bash"><span style="display:flex;"><span>hugo
+</span></span><span style="display:flex;"><span>git init
+</span></span><span style="display:flex;"><span>git remote add origin https://github.com/帳號/帳號.github.io.git
+</span></span><span style="display:flex;"><span>git add .
+</span></span><span style="display:flex;"><span>git commit -m <span style="color:#e6db74">&#34;first post&#34;</span>
+</span></span><span style="display:flex;"><span>git push origin master
+</span></span></code></pre></div><p>就能夠在https://帳號.github.io看到自己的頁面了</p>
 
     </article>
 
